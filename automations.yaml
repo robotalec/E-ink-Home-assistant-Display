@@ -1,0 +1,18 @@
+- id: '1720748558122'
+  alias: Weather Updating
+  description: ''
+  trigger:
+  - platform: time_pattern
+    hours: '2'
+  condition: []
+  action:
+  - service: weather.get_forecasts
+    data:
+      type: daily
+    target:
+      entity_id: weather.forecast_home
+    response_variable: weather_forecast_response
+  - service: python_script.update_weather_forecast
+    data:
+      forecast_data: '{{ weather_forecast_response }}'
+  mode: single

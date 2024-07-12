@@ -1,0 +1,114 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+# Weather platform setup
+weather:
+  - platform: met
+    name: forecast_home
+
+# Include scripts and scenes
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+# Define the text input entities
+input_text:
+  weather_forecast_day_1_condition:
+    name: "Day 1 Forecast Condition"
+    initial: "unavailable"
+    max: 100
+  weather_forecast_day_1_temperature:
+    name: "Day 1 Forecast Temperature"
+    initial: "unavailable"
+    max: 100
+  weather_forecast_day_1_datetime:
+    name: "Day 1 Forecast Datetime"
+    initial: "unavailable"
+    max: 100
+
+  weather_forecast_day_2_condition:
+    name: "Day 2 Forecast Condition"
+    initial: "unavailable"
+    max: 100
+  weather_forecast_day_2_temperature:
+    name: "Day 2 Forecast Temperature"
+    initial: "unavailable"
+    max: 100
+  weather_forecast_day_2_datetime:
+    name: "Day 2 Forecast Datetime"
+    initial: "unavailable"
+    max: 100
+
+  weather_forecast_day_3_condition:
+    name: "Day 3 Forecast Condition"
+    initial: "unavailable"
+    max: 100
+  weather_forecast_day_3_temperature:
+    name: "Day 3 Forecast Temperature"
+    initial: "unavailable"
+    max: 100
+  weather_forecast_day_3_datetime:
+    name: "Day 3 Forecast Datetime"
+    initial: "unavailable"
+    max: 100
+
+  weather_forecast_day_4_condition:
+    name: "Day 4 Forecast Condition"
+    initial: "unavailable"
+    max: 100
+  weather_forecast_day_4_temperature:
+    name: "Day 4 Forecast Temperature"
+    initial: "unavailable"
+    max: 100
+  weather_forecast_day_4_datetime:
+    name: "Day 4 Forecast Datetime"
+    initial: "unavailable"
+    max: 100
+
+  weather_forecast_day_5_condition:
+    name: "Day 5 Forecast Condition"
+    initial: "unavailable"
+    max: 100
+  weather_forecast_day_5_temperature:
+    name: "Day 5 Forecast Temperature"
+    initial: "unavailable"
+    max: 100
+  weather_forecast_day_5_datetime:
+    name: "Day 5 Forecast Datetime"
+    initial: "unavailable"
+    max: 100
+
+# Include automation from automations.yaml
+automation: !include automations.yaml
+
+# Define template sensors to display weather forecast data
+template:
+  - sensor:
+      - name: "Day 1 Forecast Condition"
+        state: "{{ states('input_text.weather_forecast_day_1_condition') }}"
+        attributes:
+          temperature: "{{ states('input_text.weather_forecast_day_1_temperature') }}"
+          datetime: "{{ states('input_text.weather_forecast_day_1_datetime') }}"
+      - name: "Day 2 Forecast Condition"
+        state: "{{ states('input_text.weather_forecast_day_2_condition') }}"
+        attributes:
+          temperature: "{{ states('input_text.weather_forecast_day_2_temperature') }}"
+          datetime: "{{ states('input_text.weather_forecast_day_2_datetime') }}"
+      - name: "Day 3 Forecast Condition"
+        state: "{{ states('input_text.weather_forecast_day_3_condition') }}"
+        attributes:
+          temperature: "{{ states('input_text.weather_forecast_day_3_temperature') }}"
+          datetime: "{{ states('input_text.weather_forecast_day_3_datetime') }}"
+      - name: "Day 4 Forecast Condition"
+        state: "{{ states('input_text.weather_forecast_day_4_condition') }}"
+        attributes:
+          temperature: "{{ states('input_text.weather_forecast_day_4_temperature') }}"
+          datetime: "{{ states('input_text.weather_forecast_day_4_datetime') }}"
+      - name: "Day 5 Forecast Condition"
+        state: "{{ states('input_text.weather_forecast_day_5_condition') }}"
+        attributes:
+          temperature: "{{ states('input_text.weather_forecast_day_5_temperature') }}"
+          datetime: "{{ states('input_text.weather_forecast_day_5_datetime') }}"
