@@ -5,11 +5,7 @@ default_config:
 frontend:
   themes: !include_dir_merge_named themes
 
-# Weather platform setup
-weather:
-  - platform: met
-    name: forecast_home
-
+python_script:
 # Include scripts and scenes
 script: !include scripts.yaml
 scene: !include scenes.yaml
