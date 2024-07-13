@@ -2,9 +2,11 @@
 Setting up a sensor and weatherman for home assistant and a e-ink esp32 display
 First I want to thank Madelna and DeastinY for thier projects providing solid base for my project.
 
-https://github.com/Madelena/esphome-weatherman-dashboard
-https://github.com/DeastinY/esphome-waveshare-e-paper-dashboard
-
+* https://github.com/Madelena/esphome-weatherman-dashboard
+* https://github.com/DeastinY/esphome-waveshare-e-paper-dashboard
+Also thank you to MallocArray for their Air Gradient esphome code
+* https://github.com/MallocArray/airgradient_esphome
+* 
 This is a repo for my project for a more modular/drop in setup for a E-Ink Display dashboard
 This dashboard currently shows sensor readings from a air-gradient pro and an Air GRadient Open Air for indoor and outdoor readings
 The weather is done with the built in weather sensor in Home assistant.
