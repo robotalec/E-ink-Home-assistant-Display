@@ -12,6 +12,9 @@ This is a repo for my project for a more modular/drop in setup for a E-Ink Displ
 This dashboard currently shows sensor readings from a air-gradient pro and an Air GRadient Open Air for indoor and outdoor readings
 The weather is done with the built in weather sensor in Home assistant.
 
+![IMG_8724](https://github.com/user-attachments/assets/78ac15a6-40f2-4a48-946d-a7e5e5d0cf35)
+
+
 The code is designed for a waveshare 7.5in E-ink display using a waveshare esp32 e-ink display driver
 Currently as of 7/12/2024 it only has todays weather but the code is setup to easily add a 5 day forecast just need to setup the display to show it.
 
