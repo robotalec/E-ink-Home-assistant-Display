@@ -195,7 +195,7 @@ display:
     #800 tall 480 wide
     lambda: |-
       it.fill(color_bg);
-
+      int offsetX = 60;
       int offsetY = 50;
       int air_quality_danger_thresh = 800;
       int quality_air = int(id(air_quality).state);
@@ -205,7 +205,224 @@ display:
       float outdoor_temp = id(temp_outdoor).state;
       int air_quality_index = int(id(outdoor_air_quality).state);
 
-      /* OFFICE */
+      // Forecast
+      offsetY = 60;
+      it.print(10, offsetY - 30, id(main_sensor_unit), "5 Day Forecast");
+      it.print(215, offsetY + 68, id(main_sensor_unit), "Today");
+      it.filled_rectangle(150, offsetY - 19 , 275, 3);
+
+      std::string condition = id(day_1_forecast_condition).state;
+      std::string temp = id(day_1_forecast_temperature).state;
+      if (condition == "clear-night") {
+        it.print(240, offsetY + 35, id(weather_large), TextAlign::BASELINE_CENTER, "󰖔"); 
+      } else if (condition == "cloudy") {
+        it.print(240, offsetY + 35, id(weather_large), TextAlign::BASELINE_CENTER, "󰖐"); 
+      } else if (condition == "fog") {
+        it.print(240, offsetY + 35, id(weather_large), TextAlign::BASELINE_CENTER, "󰖑"); 
+      } else if (condition == "hail") {
+        it.print(240, offsetY + 35, id(weather_large), TextAlign::BASELINE_CENTER, "󰖒"); 
+      } else if (condition == "lightning") {
+        it.print(240, offsetY + 35, id(weather_large), TextAlign::BASELINE_CENTER, "󰖓"); 
+      } else if (condition == "lightning-rainy") {
+        it.print(240, offsetY + 35, id(weather_large), TextAlign::BASELINE_CENTER, "󰙾"); 
+      } else if (condition == "partlycloudy") {
+        it.print(240, offsetY + 35, id(weather_large), TextAlign::BASELINE_CENTER, "󰖕"); 
+      } else if (condition == "pouring") {
+        it.print(240, offsetY + 35, id(weather_large), TextAlign::BASELINE_CENTER, "󰖖"); 
+      } else if (condition == "rainy") {
+        it.print(240, offsetY + 35, id(weather_large), TextAlign::BASELINE_CENTER, "󰖗"); 
+      } else if (condition == "snowy") {
+        it.print(240, offsetY + 35, id(weather_large), TextAlign::BASELINE_CENTER, "󰖘"); 
+      } else if (condition == "snowy-rainy") {
+        it.print(240, offsetY + 35, id(weather_large), TextAlign::BASELINE_CENTER, "󰙿"); 
+      } else if (condition == "sunny") {
+        it.print(240, offsetY + 35, id(weather_large), TextAlign::BASELINE_CENTER, "󰖙"); 
+      } else if (condition == "windy") {
+        it.print(240, offsetY + 35, id(weather_large), TextAlign::BASELINE_CENTER, "󰖝"); 
+      } else if (condition == "windy-variant") {
+        it.print(240, offsetY + 35, id(weather_large), TextAlign::BASELINE_CENTER, "󰖞"); 
+      } else if (condition == "exceptional") {
+        it.print(240, offsetY + 30, id(weather_large), TextAlign::BASELINE_CENTER, "󰋖"); 
+      } else {
+        it.print(240, offsetY + 35, id(weather_large), TextAlign::BASELINE_CENTER, "󰋖"); 
+      }
+      it.printf(240, offsetY + 65, id(sub_sensor_font), TextAlign::BASELINE_CENTER, "%s", temp.c_str());
+
+      // day2
+      offsetY = 170;
+      it.print(offsetX - 59, offsetY + 53, id(main_sensor_unit), "Tomorrow");
+
+
+      std::string condition2 = id(day_2_forecast_condition).state;
+      std::string temp2 = id(day_2_forecast_temperature).state;
+      if (condition2 == "clear-night") {
+        it.print(offsetX, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖔"); 
+      } else if (condition2 == "cloudy") {
+        it.print(offsetX, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖐"); 
+      } else if (condition2 == "fog") {
+        it.print(offsetX, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖑"); 
+      } else if (condition2 == "hail") {
+        it.print(offsetX, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖒"); 
+      } else if (condition2 == "lightning") {
+        it.print(offsetX, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖓"); 
+      } else if (condition2 == "lightning-rainy") {
+        it.print(offsetX, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰙾"); 
+      } else if (condition2 == "partlycloudy") {
+        it.print(offsetX, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖕"); 
+      } else if (condition2 == "pouring") {
+        it.print(offsetX, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖖"); 
+      } else if (condition2 == "rainy") {
+        it.print(offsetX, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖗"); 
+      } else if (condition2 == "snowy") {
+        it.print(offsetX, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖘"); 
+      } else if (condition2 == "snowy-rainy") {
+        it.print(offsetX, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰙿"); 
+      } else if (condition2 == "sunny") {
+        it.print(offsetX, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖙"); 
+      } else if (condition2 == "windy") {
+        it.print(offsetX, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖝"); 
+      } else if (condition2 == "windy-variant") {
+        it.print(offsetX, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖞"); 
+      } else if (condition2 == "exceptional") {
+        it.print(offsetX, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰋖"); 
+      } else {
+        it.print(offsetX, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰋖"); 
+      }
+      it.printf(offsetX, offsetY + 50, id(sub_sensor_font), TextAlign::BASELINE_CENTER, "%s", temp2.c_str());
+    
+      // day3
+      //offsetY = 150;
+      offsetX = 80;
+      it.print(offsetX + 30, offsetY + 53, id(main_sensor_unit), "Day 3");
+
+
+      std::string condition3 = id(day_3_forecast_condition).state;
+      std::string temp3 = id(day_3_forecast_temperature).state;
+      if (condition3 == "clear-night") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖔"); 
+      } else if (condition3 == "cloudy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖐"); 
+      } else if (condition3 == "fog") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖑"); 
+      } else if (condition3 == "hail") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖒"); 
+      } else if (condition3 == "lightning") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖓"); 
+      } else if (condition3 == "lightning-rainy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰙾"); 
+      } else if (condition3 == "partlycloudy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖕"); 
+      } else if (condition3 == "pouring") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖖"); 
+      } else if (condition3 == "rainy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖗"); 
+      } else if (condition3 == "snowy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖘"); 
+      } else if (condition3 == "snowy-rainy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰙿"); 
+      } else if (condition3 == "sunny") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖙"); 
+      } else if (condition3 == "windy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖝"); 
+      } else if (condition3 == "windy-variant") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖞"); 
+      } else if (condition3 == "exceptional") {
+        it.print(offsetX + 240, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰋖"); 
+      } else {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰋖"); 
+      }
+      it.printf(offsetX + 60, offsetY + 50, id(sub_sensor_font), TextAlign::BASELINE_CENTER, "%s", temp3.c_str());
+      
+
+      // day4
+      //offsetY = 150;
+      offsetX = 150;
+      it.print(offsetX + 30, offsetY + 53, id(main_sensor_unit), "Day 4");
+
+
+      std::string condition4 = id(day_4_forecast_condition).state;
+      std::string temp4 = id(day_4_forecast_temperature).state;
+      if (condition4 == "clear-night") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖔"); 
+      } else if (condition4 == "cloudy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖐"); 
+      } else if (condition4 == "fog") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖑"); 
+      } else if (condition4 == "hail") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖒"); 
+      } else if (condition4 == "lightning") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖓"); 
+      } else if (condition4 == "lightning-rainy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰙾"); 
+      } else if (condition4 == "partlycloudy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖕"); 
+      } else if (condition4 == "pouring") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖖"); 
+      } else if (condition4 == "rainy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖗"); 
+      } else if (condition4 == "snowy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖘"); 
+      } else if (condition4 == "snowy-rainy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰙿"); 
+      } else if (condition4 == "sunny") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖙"); 
+      } else if (condition4 == "windy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖝"); 
+      } else if (condition4 == "windy-variant") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖞"); 
+      } else if (condition4 == "exceptional") {
+        it.print(offsetX + 240, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰋖"); 
+      } else {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰋖"); 
+      }
+      it.printf(offsetX + 60, offsetY + 50, id(sub_sensor_font), TextAlign::BASELINE_CENTER, "%s", temp4.c_str());
+      
+      // day5
+      //offsetY = 150;
+      offsetX = 220;
+      it.print(offsetX + 30, offsetY + 53, id(main_sensor_unit), "Day 5");
+
+
+      std::string condition5 = id(day_5_forecast_condition).state;
+      std::string temp5 = id(day_5_forecast_temperature).state;
+      if (condition5 == "clear-night") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖔"); 
+      } else if (condition5 == "cloudy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖐"); 
+      } else if (condition5 == "fog") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖑"); 
+      } else if (condition5 == "hail") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖒"); 
+      } else if (condition5 == "lightning") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖓"); 
+      } else if (condition5 == "lightning-rainy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰙾"); 
+      } else if (condition5 == "partlycloudy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖕"); 
+      } else if (condition5 == "pouring") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖖"); 
+      } else if (condition5 == "rainy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖗"); 
+      } else if (condition5 == "snowy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖘"); 
+      } else if (condition5 == "snowy-rainy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰙿"); 
+      } else if (condition5 == "sunny") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖙"); 
+      } else if (condition5 == "windy") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖝"); 
+      } else if (condition5 == "windy-variant") {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰖞"); 
+      } else if (condition5 == "exceptional") {
+        it.print(offsetX + 240, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰋖"); 
+      } else {
+        it.print(offsetX + 60, offsetY + 20, id(weather_med), TextAlign::BASELINE_CENTER, "󰋖"); 
+      }
+      it.printf(offsetX + 60, offsetY + 50, id(sub_sensor_font), TextAlign::BASELINE_CENTER, "%s", temp5.c_str());
+      
+      
+      // OFFICE 
+      offsetY = 300;
       it.print(10, offsetY, id(main_sensor_unit), "Living Room");
       it.filled_rectangle(130, offsetY + 11, 285, 3);
       it.print(25, offsetY + 93, id(main_sensor_unit), TextAlign::BASELINE_LEFT, "Co2");
@@ -238,10 +455,10 @@ display:
         }
       }
 
-      /* OUTSIDE */
-      offsetY = 250;
+      // OUTSIDE 
+      offsetY = 500;
       it.print(10, offsetY, id(main_sensor_unit), "Outside");
-      it.filled_rectangle(130, offsetY + 11, 285, 3);
+      it.filled_rectangle(110, offsetY + 11, 325, 3);
       it.print(25, offsetY + 93, id(main_sensor_unit), TextAlign::BASELINE_LEFT, "AQI");
       it.print(375, offsetY + 54,  id(mdi_small), TextAlign::BASELINE_CENTER, "󰔏"); //thermometer
       it.print(375, offsetY + 94, id(mdi_small), TextAlign::BASELINE_CENTER, "󰖎"); //water-percent
@@ -271,49 +488,6 @@ display:
           it.print(37, offsetY + 66, id(mdi_med), TextAlign::BASELINE_CENTER, "󰀦"); //warning
         }
       }
-
-      // Forecast
-      offsetY = 450;
-      it.print(10, offsetY - 50, id(main_sensor_unit), "Forecast");
-      it.print(215, offsetY + 53, id(main_sensor_unit), "Today");
-      it.filled_rectangle(130, offsetY - 39 , 285, 3);
-
-      std::string condition = id(day_1_forecast_condition).state;
-      std::string temp = id(day_1_forecast_temperature).state;
-      if (condition == "clear-night") {
-        it.print(240, offsetY + 20, id(weather_large), TextAlign::BASELINE_CENTER, "󰖔"); 
-      } else if (condition == "cloudy") {
-        it.print(240, offsetY + 20, id(weather_large), TextAlign::BASELINE_CENTER, "󰖐"); 
-      } else if (condition == "fog") {
-        it.print(240, offsetY + 20, id(weather_large), TextAlign::BASELINE_CENTER, "󰖑"); 
-      } else if (condition == "hail") {
-        it.print(240, offsetY + 20, id(weather_large), TextAlign::BASELINE_CENTER, "󰖒"); 
-      } else if (condition == "lightning") {
-        it.print(240, offsetY + 20, id(weather_large), TextAlign::BASELINE_CENTER, "󰖓"); 
-      } else if (condition == "lightning-rainy") {
-        it.print(240, offsetY + 20, id(weather_large), TextAlign::BASELINE_CENTER, "󰙾"); 
-      } else if (condition == "partlycloudy") {
-        it.print(240, offsetY + 20, id(weather_large), TextAlign::BASELINE_CENTER, "󰖕"); 
-      } else if (condition == "pouring") {
-        it.print(240, offsetY + 20, id(weather_large), TextAlign::BASELINE_CENTER, "󰖖"); 
-      } else if (condition == "rainy") {
-        it.print(240, offsetY + 20, id(weather_large), TextAlign::BASELINE_CENTER, "󰖗"); 
-      } else if (condition == "snowy") {
-        it.print(240, offsetY + 20, id(weather_large), TextAlign::BASELINE_CENTER, "󰖘"); 
-      } else if (condition == "snowy-rainy") {
-        it.print(240, offsetY + 20, id(weather_large), TextAlign::BASELINE_CENTER, "󰙿"); 
-      } else if (condition == "sunny") {
-        it.print(240, offsetY + 20, id(weather_large), TextAlign::BASELINE_CENTER, "󰖙"); 
-      } else if (condition == "windy") {
-        it.print(240, offsetY + 20, id(weather_large), TextAlign::BASELINE_CENTER, "󰖝"); 
-      } else if (condition == "windy-variant") {
-        it.print(240, offsetY + 20, id(weather_large), TextAlign::BASELINE_CENTER, "󰖞"); 
-      } else if (condition == "exceptional") {
-        it.print(240, offsetY + 20, id(weather_large), TextAlign::BASELINE_CENTER, "󰋖"); 
-      } else {
-        it.print(240, offsetY + 20, id(weather_large), TextAlign::BASELINE_CENTER, "󰋖"); 
-      }
-      it.printf(240, offsetY + 50, id(sub_sensor_font), TextAlign::BASELINE_CENTER, "%s", temp.c_str());
       
 
       /* FOOTER */
