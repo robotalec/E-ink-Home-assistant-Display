@@ -23,7 +23,7 @@ The weather is done with the built in weather sensor in Home assistant.
 
 
 The code is designed for a waveshare 7.5in E-ink display using a waveshare esp32 e-ink display driver
-Currently as of 7/12/2024 it only has todays weather but the code is setup to easily add a 5 day forecast just need to setup the display to show it.
+
 
 the automation is to run a python script put into a folder called python_scripts
 the python script pulls data from the forecast get forecast and splits the data for the different values of condition, tempurature and humidity.
