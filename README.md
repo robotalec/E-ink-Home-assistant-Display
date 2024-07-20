@@ -14,6 +14,11 @@ Items used for this project:
 * E-ink Display https://www.amazon.com/dp/B075R4QY3L?psc=1&ref=ppx_yo2ov_dt_b_product_details
 * ESP32 waveshare e-ink driver https://www.amazon.com/dp/B07M5CNP3B?psc=1&ref=ppx_yo2ov_dt_b_product_details
 
+
+Fonts used:
+* https://fonts.google.com/specimen/Roboto
+* https://github.com/Templarian/MaterialDesign-Webfont
+
 This is a repo for my project for a more modular/drop in setup for a E-Ink Display dashboard
 This dashboard currently shows sensor readings from a air-gradient pro and an Air GRadient Open Air for indoor and outdoor readings
 The weather is done with the built in weather sensor in Home assistant.
